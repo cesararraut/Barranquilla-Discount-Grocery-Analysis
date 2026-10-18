@@ -1,4 +1,4 @@
--- Add estrato and neighborhood to each white-space cell
+-- Adding estrato and neighborhood to each white-space cell
 CREATE OR REPLACE TABLE geo_retail.whitespace_context AS
 WITH g AS (SELECT *, ST_GEOGPOINT(lon, lat) AS center FROM geo_retail.whitespace),
 e AS (
