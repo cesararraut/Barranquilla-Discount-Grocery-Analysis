@@ -55,33 +55,38 @@ Top 3 neighborhoods which have the most small stores and no discount grocery wit
 
 **Study area:** bounding box lon −74.90 to −74.74, lat 10.88 to 11.06 (Barranquilla, Soledad and nearby areas).
 
-## ELT Pipeline
-
+## ELT pipeline
+ 
 ```mermaid
 flowchart LR
-    subgraph S["1 Data Extration and Loading (Python · Colab)"]
-        A["OpenStreetMap<br/>Overpass API"]
+    subgraph S["1 Extract and load (Python · Colab)"]
+        A["OpenStreetMap stores<br/>Overpass API"]
         B["Overture Maps<br/>confidence ≥ 0.5"]
         C["Alcaldía geoportal<br/>estrato by block"]
+        K["OpenStreetMap<br/>city boundary"]
     end
-
-    subgraph Q["2 Data transformation Process (SQL · BigQuery GIS)"]
+ 
+    subgraph Q["2 Transform (SQL · BigQuery GIS)"]
         D["stores_all<br/>combine + label chains"]
-        E{"Audit<br/>capture–recapture<br/>≈ 62% coverage"}
+        E{"Audit<br/>capture–recapture<br/>≈ 62.5% coverage"}
         F["stores_final<br/>deduplicate, OSM first"]
-        G["whitespace<br/>~550 m grid<br/>demand vs. competition"]
-        H["whitespace_context<br/>+ estrato & barrio"]
+        G["grid_fine<br/>~165 m grid"]
+        H["grid_scores<br/>demand vs. competition"]
+        J["grid_context<br/>city cut + estrato + barrio"]
+        L["map_layers<br/>4 corners per cell"]
     end
-
-    subgraph V["3 Data Transformation"]
+ 
+    subgraph V["3 Visualize"]
         I["Tableau Public<br/>dashboard"]
     end
-
+ 
     A --> D
     B --> D
-    D --> E --> F --> G --> H
-    C --> H
-    H --> I 
+    D --> E --> F --> H
+    G --> H --> J
+    C --> J
+    K --> J
+    J --> L --> I
 ```
 
 
