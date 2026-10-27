@@ -32,13 +32,12 @@ The project finds the parts of the city where all three conditions are true.
  
 ## Key findings
  
-Top 3 zones with the most small stores and no discount store within 1 km:
+The white space forms two zones in the south of the city. Each zone groups neighboring barrios, and the values are averages of their white-space cells:
  
 | # | Zone (around…) | Average estrato | Small stores within 500 m | Discount stores within 1 km |
 |---|---|---|---|---|
-| 1 | Los Girasoles | 1–2 | 11 | 0 |
-| 2 | Las Palmeras | 1–2 | 5 | 0 |
-| 3 | Simón Bolívar – Santa Helena | 1–2 | 11 | 0 |
+| 1 | Simón Bolívar – Santa Helena | 2.1–2.2 | 10.0–13.0 | 0 |
+| 2 | Villa Sevilla – Los Girasoles | 1.5 | 8.7–11.5 | 0 |
  
 **Overall patterns**
 - Discount chains already cover almost all of Barranquilla. Most of the city is within 1 km of a D1, Ara or Isimo.
@@ -148,9 +147,7 @@ FROM estimate
  
 **Capture–recapture (Lincoln–Petersen) estimate formula:**
  
-
-N̂ = (n₁ × n₂) / m
-
+**N̂ = (n₁ × n₂) / m**
  
 ## Limitations
  
